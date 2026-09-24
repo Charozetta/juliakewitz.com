@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Julia Kewitz — Prototype</title>
+<style>
+:root{
+  --bg:#f4f0e8; --paper:#fcfaf6; --ink:#132033; --muted:#6e6a65;
+  --line:#d8d0c4; --accent:#a96846; --green:#9b9387;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.shell{width:min(1180px,calc(100% - 36px));margin:0 auto}
+.topbar{position:sticky;top:0;z-index:40;background:rgba(243,239,232,.86);backdrop-filter:blur(14px);border-bottom:1px solid rgba(217,210,199,.7)}
+.nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{font:700 1.45rem Georgia,serif}
+.navlinks{display:flex;gap:24px;align-items:center;font-size:.95rem}
+.navlinks a{position:relative}
+.navlinks a:after{content:"";position:absolute;left:0;right:100%;bottom:-8px;height:2px;background:var(--accent);transition:.2s}
+.navlinks a:hover:after{right:0}
+.pill{border:1px solid var(--ink);padding:10px 15px;border-radius:999px}
+.hero{min-height:78vh;display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;padding:70px 0 60px}
+.eyebrow{text-transform:uppercase;letter-spacing:.15em;font-size:.73rem;color:var(--accent);font-weight:700}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;margin:0;font-weight:600}
+h1{font-size:clamp(3.7rem,7vw,6.9rem);line-height:.92;letter-spacing:-.045em;margin:14px 0 24px}
+.hero-sub{font-size:clamp(1.35rem,2.3vw,2rem);line-height:1.2;max-width:690px}
+.hero-copy{max-width:700px;color:#45515d;font-size:1.03rem;margin:28px 0}
+.hero-links{display:flex;flex-wrap:wrap;gap:10px}
+.hero-links a{border:1px solid var(--line);background:rgba(255,255,255,.48);padding:10px 14px;border-radius:999px;transition:.2s}
+.hero-links a:hover{transform:translateY(-2px);border-color:var(--ink)}
+.portrait-card{min-height:520px;border-radius:30px;position:relative;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.10);
+background:
+radial-gradient(circle at 70% 18%,rgba(169,104,70,.18),transparent 26%),
+radial-gradient(circle at 18% 78%,rgba(155,147,135,.28),transparent 32%),
+linear-gradient(145deg,#d8d0c4,#fbf8f2 55%,#d1cbc2)}
+.portrait-inner{position:absolute;inset:28px;border:1px solid rgba(19,32,51,.13);border-radius:24px;padding:30px;display:flex;align-items:flex-end}
+.portrait-note{background:rgba(251,250,247,.86);padding:18px 20px;border:1px solid rgba(19,32,51,.09);border-radius:18px;max-width:330px}
+.portrait-note strong{display:block;margin-bottom:6px}
+.monogram{position:absolute;right:32px;top:18px;font:700 8rem Georgia,serif;opacity:.07}
+section{padding:96px 0;scroll-margin-top:90px}
+.section-head{display:grid;grid-template-columns:170px 1fr;gap:44px;margin-bottom:42px}
+.section-index{text-transform:uppercase;letter-spacing:.12em;color:var(--accent);font-size:.77rem;padding-top:7px}
+.section-title{font-size:clamp(2.5rem,4vw,4.2rem);line-height:1.03;max-width:840px}
+.section-intro{color:#58636d;max-width:760px;margin-top:18px}
+.about-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:28px;transition:.25s}
+.card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,.08)}
+.kicker{text-transform:uppercase;letter-spacing:.11em;font-size:.73rem;color:var(--accent);font-weight:700}
+.card h3{font-size:1.65rem;margin:12px 0}
+.card p{color:#59636d;margin:0}
+.work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.work-card{cursor:pointer;padding:0;overflow:hidden;min-height:360px;display:flex;flex-direction:column}
+.visual{height:150px;position:relative;background:
+linear-gradient(120deg,rgba(19,32,51,.08),rgba(169,104,70,.13)),
+repeating-linear-gradient(90deg,transparent,transparent 24px,rgba(19,32,51,.05) 25px)}
+.visual:before,.visual:after{content:"";position:absolute;border:1px solid rgba(19,32,51,.18);border-radius:50%}
+.visual:before{width:170px;height:170px;right:-25px;top:-55px}
+.visual:after{width:96px;height:96px;right:55px;top:34px}
+.work-body{padding:28px;display:flex;flex-direction:column;flex:1}
+.work-body h3{font-size:2rem;margin:10px 0 12px}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto}
+.tag{border:1px solid var(--line);background:#fffdf9;padding:7px 10px;border-radius:999px;font-size:.78rem}
+.open-line{display:flex;justify-content:space-between;margin-top:22px;font-size:.92rem;font-weight:700}
+.research-panel{display:grid;grid-template-columns:1.05fr .95fr;gap:22px;background:linear-gradient(135deg,#ece7df,#fbf7f0);border:1px solid var(--line);border-radius:30px;padding:34px}
+.research-question{font:600 clamp(2.1rem,4vw,4rem)/1.05 Georgia,serif}
+.research-side{display:grid;gap:12px}
+.research-chip{background:rgba(255,255,255,.65);border:1px solid rgba(19,32,51,.09);border-radius:18px;padding:18px 20px}
+.research-chip strong{display:block;margin-bottom:5px}
+.gnodus{display:grid;grid-template-columns:.8fr 1.2fr;border-radius:30px;overflow:hidden;background:#132033;color:#f7f1e8;box-shadow:inset 0 2px 0 rgba(169,104,70,.55)}
+.gnodus-logo{min-height:330px;display:flex;align-items:center;justify-content:center;font:600 3rem Georgia,serif;background:
+radial-gradient(circle at 70% 30%,rgba(169,104,70,.52),transparent 25%),
+radial-gradient(circle at 20% 70%,rgba(155,147,135,.34),transparent 28%),#0e1a2b}
+.gnodus-copy{padding:42px;display:flex;flex-direction:column;justify-content:center}
+.gnodus-copy h3{font-size:3rem;margin:8px 0 18px}
+.gnodus-copy p{color:#cdd4db}
+.light-button{width:max-content;border:1px solid rgba(255,255,255,.35);background:transparent;color:#fff;padding:11px 14px;border-radius:999px;cursor:pointer}
+.writing-list{border-top:1px solid var(--line)}
+.writing-item{display:grid;grid-template-columns:100px 1fr 120px;gap:24px;align-items:center;padding:22px 0;border-bottom:1px solid var(--line)}
+.writing-year{color:var(--accent);font-weight:700;font-size:.86rem}
+.writing-title{font:500 1.35rem Georgia,serif;transition:.2s}
+.writing-item:hover .writing-title{transform:translateX(5px)}
+.writing-type{text-align:right;color:#68717a;font-size:.9rem}
+.currently{display:flex;gap:10px;flex-wrap:wrap}
+.currently span{border:1px solid var(--line);background:var(--paper);padding:12px 16px;border-radius:999px}
+footer{border-top:1px solid var(--line);padding:60px 0 36px}
+.footer-grid{display:flex;justify-content:space-between;align-items:flex-end;gap:28px}
+.footer-name{font:600 2.3rem Georgia,serif}
+.footer-links{display:flex;gap:15px;flex-wrap:wrap;color:#59636d}
+.backtop{position:fixed;right:20px;bottom:20px;width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:rgba(251,250,247,.92);box-shadow:0 10px 24px rgba(0,0,0,.08);opacity:0;pointer-events:none;transition:.2s;z-index:25;cursor:pointer}
+.backtop.show{opacity:1;pointer-events:auto}
+.modal-wrap{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:100;background:rgba(10,17,28,.35);backdrop-filter:blur(8px);padding:22px}
+.modal-wrap.open{display:flex}
+.modal{width:min(860px,100%);max-height:86vh;overflow:auto;background:var(--paper);border:1px solid var(--line);border-radius:28px;box-shadow:0 28px 80px rgba(0,0,0,.25);animation:pop .22s ease forwards;transform:translateY(12px) scale(.985);opacity:0}
+@keyframes pop{to{transform:none;opacity:1}}
+.modal-top{display:flex;justify-content:space-between;padding:28px 30px 0}
+.modal-close{border:0;background:transparent;font-size:1.8rem;cursor:pointer;color:#58616a}
+.modal-content{padding:12px 30px 34px}
+.modal-content h3{font-size:2.55rem;margin:8px 0 16px}
+.modal-content p{color:#56616b}
+.modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
+.modal-box{background:#fffdf9;border:1px solid var(--line);border-radius:18px;padding:18px}
+.modal-box strong{display:block;margin-bottom:6px}
+.modal-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.modal-actions a{border:1px solid var(--ink);padding:10px 13px;border-radius:999px;font-size:.9rem}
+.reveal{opacity:0;transform:translateY(24px);transition:.7s ease}
+.reveal.visible{opacity:1;transform:none}
+@media(max-width:900px){
+  .navlinks a:not(.pill){display:none}
+  .hero,.research-panel,.gnodus{grid-template-columns:1fr}
+  .hero{min-height:auto}
+  .section-head{grid-template-columns:1fr;gap:10px}
+  .about-grid,.work-grid{grid-template-columns:1fr}
+  .portrait-card{min-height:390px}
+  .writing-item{grid-template-columns:80px 1fr}.writing-type{display:none}
+}
+@media(max-width:600px){
+  .shell{width:min(100% - 22px,1180px)}
+  .nav{min-height:62px}
+  h1{font-size:3.5rem}
+  section{padding:72px 0}
+  .modal-grid{grid-template-columns:1fr}
+  .footer-grid{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="shell nav">
+    <a class="brand" href="#top">JK</a>
+    <nav class="navlinks">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#research">Research</a>
+      <a href="#gnodus">Gnodus</a>
+      <a href="#writing">Writing</a>
+      <a href="#contact" class="pill">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="shell">
+    <section class="hero">
+      <div class="reveal visible">
+        <div class="eyebrow">Personal site prototype · v0.1</div>
+        <h1>Julia<br>Kewitz</h1>
+        <div class="hero-sub">Designing systems that turn knowledge into decisions.</div>
+        <p class="hero-copy">
+          I work with complex systems, data and expert knowledge. My background spans transportation,
+          decision support and applied analytics. I currently explore NLP and computational knowledge
+          representation while building Gnodus.
+        </p>
+        <div class="hero-links">
+          <a href="#" onclick="event.preventDefault();alert('Prototype: insert GitHub URL')">GitHub ↗</a>
+          <a href="#" onclick="event.preventDefault();alert('Prototype: insert LinkedIn URL')">LinkedIn ↗</a>
+          <a href="#" onclick="event.preventDefault();alert('Prototype: CV PDF')">CV ↗</a>
+          <a href="mailto:hello@example.com">Email ↗</a>
+        </div>
+      </div>
+      <div class="portrait-card reveal">
+        <div class="portrait-inner">
+          <div class="portrait-note">
+            <strong>Current focus</strong>
+            <span>Computable expert knowledge, NLP, semantic alignment and verifiable decision support.</span>
+          </div>
+          <div class="monogram">JK</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section id="about">
+    <div class="shell">
+      <div class="section-head reveal">
+        <div class="section-index">01 · About</div>
+        <div>
+          <h2 class="section-title">One trajectory, several domains.</h2>
+          <p class="section-intro">The site does not force one job title. It makes the trajectory understandable: real-world systems → analytics → computational methods → knowledge systems.</p>
+        </div>
+      </div>
+      <div class="about-grid">
+        <article class="card reveal">
+          <div class="kicker">Background</div>
+          <h3>Complex systems</h3>
+          <p>15+ years across transportation, logistics, operations, planning and decision-support environments.</p>
+        </article>
+        <article class="card reveal">
+          <div class="kicker">How I work</div>
+          <h3>Structure before solutions</h3>
+          <p>I like turning messy systems into explicit models, data structures and decision logic people can interrogate.</p>
+        </article>
+        <article class="card reveal">
+          <div class="kicker">Direction</div>
+          <h3>Knowledge systems</h3>
+          <p>Current research explores how expert knowledge can remain contextual, verifiable and useful after becoming computational.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="shell">
+      <div class="section-head reveal">
+        <div class="section-index">02 · Selected work</div>
+        <div>
+          <h2 class="section-title">Evidence, not a list of skills.</h2>
+          <p class="section-intro">Click any card. The prototype opens a floating detail window instead of sending you away from the page.</p>
+        </div>
+      </div>
+      <div class="work-grid">
+        <article class="card work-card reveal" data-modal="transport">
+          <div class="visual"></div>
+          <div class="work-body">
+            <div class="kicker">Professional work</div>
+            <h3>Transportation Decision Support</h3>
+            <p>Planning, operations and decision-support work across complex transport systems.</p>
+            <div class="tags"><span class="tag">Systems thinking</span><span class="tag">Operations</span><span class="tag">Decision support</span></div>
+            <div class="open-line"><span>Explore</span><span>↗</span></div>
+          </div>
+        </article>
+        <article class="card work-card reveal" data-modal="northcart">
+          <div class="visual"></div>
+          <div class="work-body">
+            <div class="kicker">Applied data engineering</div>
+            <h3>NorthCart Feature Pipeline</h3>
+            <p>A reproducible batch pipeline generating customer-level features while preventing future-data leakage.</p>
+            <div class="tags"><span class="tag">Python</span><span class="tag">Airflow</span><span class="tag">PostgreSQL</span></div>
+            <div class="open-line"><span>Explore</span><span>↗</span></div>
+          </div>
+        </article>
+        <article class="card work-card reveal" data-modal="ml">
+          <div class="visual"></div>
+          <div class="work-body">
+            <div class="kicker">Applied machine learning</div>
+            <h3>Demand Forecasting with ML</h3>
+            <p>End-to-end ML workflow with feature engineering, stability monitoring and model evaluation.</p>
+            <div class="tags"><span class="tag">CatBoost</span><span class="tag">PSI</span><span class="tag">Feature engineering</span></div>
+            <div class="open-line"><span>Explore</span><span>↗</span></div>
+          </div>
+        </article>
+        <article class="card work-card reveal" data-modal="clinical">
+          <div class="visual"></div>
+          <div class="work-body">
+            <div class="kicker">Independent research</div>
+            <h3>Clinical Knowledge Representation</h3>
+            <p>Experiments in extracting, aligning and representing clinical knowledge for verifiable decision support.</p>
+            <div class="tags"><span class="tag">NLP</span><span class="tag">NER</span><span class="tag">Ontologies</span><span class="tag">Knowledge graphs</span></div>
+            <div class="open-line"><span>Explore</span><span>↗</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="research">
+    <div class="shell">
+      <div class="section-head reveal">
+        <div class="section-index">03 · Research</div>
+        <div><h2 class="section-title">A research question instead of buzzwords.</h2></div>
+      </div>
+      <div class="research-panel reveal">
+        <div>
+          <div class="kicker">Current question</div>
+          <div class="research-question">How can expert knowledge become computable without losing context, provenance and meaning?</div>
+          <p class="section-intro">Clinical guidelines are the current research setting: a difficult, high-stakes domain where trustworthy knowledge representation matters.</p>
+          <button class="pill" style="background:transparent;cursor:pointer;margin-top:12px" data-modal="research">Open research note ↗</button>
+        </div>
+        <div class="research-side">
+          <div class="research-chip"><strong>01 · Extraction</strong><span>Clinical entities, recommendations and contextual signals.</span></div>
+          <div class="research-chip"><strong>02 · Alignment</strong><span>Normalizing concepts across heterogeneous sources and terminologies.</span></div>
+          <div class="research-chip"><strong>03 · Representation</strong><span>Structures that preserve relationships, evidence and provenance.</span></div>
+          <div class="research-chip"><strong>04 · Verification</strong><span>Making outputs inspectable by experts instead of opaque.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gnodus">
+    <div class="shell">
+      <div class="section-head reveal">
+        <div class="section-index">04 · Building</div>
+        <div><h2 class="section-title">Gnodus</h2><p class="section-intro">A separate entity, but part of the same intellectual trajectory.</p></div>
+      </div>
+      <div class="gnodus reveal">
+        <div class="gnodus-logo">gnodus</div>
+        <div class="gnodus-copy">
+          <div class="kicker" style="color:#c58a68">Research-driven initiative</div>
+          <h3>Verifiable knowledge systems for expert domains.</h3>
+          <p>Gnodus explores how heterogeneous expert knowledge can be transformed into transparent, inspectable decision-support systems. The current research laboratory is clinical knowledge.</p>
+          <button class="light-button" data-modal="gnodusModal">Explore Gnodus ↗</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="writing">
+    <div class="shell">
+      <div class="section-head reveal">
+        <div class="section-index">05 · Writing & talks</div>
+        <div>
+          <h2 class="section-title">A public record of ideas over time.</h2>
+          <p class="section-intro">This can start small and later absorb publications, MBA writing, talks, research notes and conference appearances.</p>
+        </div>
+      </div>
+      <div class="writing-list reveal">
+        <a href="#" class="writing-item" onclick="event.preventDefault();alert('Placeholder: research note')">
+          <div class="writing-year">2026</div><div class="writing-title">From text to computable clinical knowledge</div><div class="writing-type">Research note ↗</div>
+        </a>
+        <a href="#" class="writing-item" onclick="event.preventDefault();alert('Placeholder: talk')">
+          <div class="writing-year">2026</div><div class="writing-title">Decision systems beyond dashboards</div><div class="writing-type">Talk ↗</div>
+        </a>
+        <a href="#" class="writing-item" onclick="event.preventDefault();alert('Placeholder: MBA publication')">
+          <div class="writing-year">MBA</div><div class="writing-title">Selected publication from earlier work</div><div class="writing-type">Article ↗</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="shell">
+      <div class="section-head reveal">
+        <div class="section-index">06 · Currently curious about</div>
+        <div>
+          <h2 class="section-title">A little less CV, a little more human.</h2>
+          <div class="currently" style="margin-top:24px">
+            <span>Computable knowledge</span><span>Clinical decision systems</span><span>Mathematical thinking</span><span>Industrial AI</span><span>Research methods</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="shell footer-grid">
+    <div><div class="footer-name">Julia Kewitz</div><div style="color:#68717a;margin-top:6px">juliakewitz.com</div></div>
+    <div class="footer-links"><a href="#">GitHub</a><a href="#">LinkedIn</a><a href="#">CV</a><a href="mailto:hello@example.com">Email</a></div>
+  </div>
+</footer>
+
+<button class="backtop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<div class="modal-wrap" id="modalWrap">
+  <div class="modal">
+    <div class="modal-top">
+      <div class="kicker" id="modalKicker">Project</div>
+      <button class="modal-close" id="modalClose">×</button>
+    </div>
+    <div class="modal-content" id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+const modalData={
+transport:{kicker:"Professional work",title:"Transportation Decision Support",copy:"A placeholder for selected professional work that can be described without exposing confidential client information. The purpose is to show the kinds of systems, decisions and operational complexity you have worked with — not to reproduce a CV.",boxes:[["Problem space","Complex planning, operations, capacity, infrastructure and stakeholder decisions."],["Contribution","Structuring ambiguity, defining decision logic, translating domain constraints into usable analytical systems."],["Evidence","Selected anonymized cases, visual frameworks or public-facing artifacts can live here later."],["Next layer","Could link to a longer case page when enough public material exists."]]},
+northcart:{kicker:"Applied data engineering · Yandex Practicum",title:"NorthCart — Batch Feature Pipeline",copy:"A reproducible Airflow pipeline that creates customer-level behavioural features using time-window logic and a run-date cutoff to prevent future-data leakage.",boxes:[["Why it matters","Shows work with actual pipeline logic rather than only notebook analysis."],["Stack","Python, Airflow, PostgreSQL, feature engineering."],["Technical idea","7-day and 30-day windows, reproducibility, run_date discipline."],["Public proof","GitHub repository, README, architecture diagram and selected screenshots."]]},
+ml:{kicker:"Applied machine learning · Yandex Practicum",title:"Demand Forecasting with ML",copy:"An end-to-end applied machine-learning project covering data preparation, feature creation, feature stability monitoring and model evaluation.",boxes:[["Problem","Forecasting under changing data distributions."],["Methods","Feature engineering, PSI monitoring, CatBoostRegressor, MAE/RMSE evaluation."],["Signal","A compact project that demonstrates structured ML thinking."],["Public proof","Repository, notebook, short write-up and model card-style summary."]]},
+clinical:{kicker:"Independent research",title:"Clinical Knowledge Representation",copy:"Research on how heterogeneous clinical guideline text can be transformed into representations that remain semantically aligned, contextual and verifiable.",boxes:[["Research setting","Oncology clinical guidelines."],["Methods","Biomedical NER, semantic normalization, ontologies, knowledge graphs."],["Core concern","Preserving context, provenance, recommendation logic and evidence."],["Public proof","Research notes, experiment summaries, selected code and prototype."]]},
+research:{kicker:"Research note",title:"Computable Expert Knowledge",copy:"The long-term question is broader than one model or one domain: how can expert knowledge be made computationally useful without stripping away the context that makes it trustworthy?",boxes:[["1. Extract","Identify entities, conditions, recommendations and contextual qualifiers."],["2. Align","Normalize heterogeneous terms and concepts."],["3. Represent","Encode relationships, provenance, logic and evidence."],["4. Validate","Keep experts in the verification loop."]]},
+gnodusModal:{kicker:"Building Gnodus",title:"From research problem to knowledge system",copy:"Gnodus is positioned as a research-driven initiative rather than another generic AI agent. The object of interest is how expert knowledge becomes transparent, verifiable and practically usable in decision-support systems.",boxes:[["Not the product","A generic chatbot, generic LLM layer or consulting service."],["Research object","Knowledge representation, context, provenance, evidence and expert validation."],["First domain","Clinical decision support, starting with oncology guidelines."],["Later","Other complex expert domains can use the same underlying knowledge-system principles."]]}
+};
+const wrap=document.getElementById('modalWrap'),closeBtn=document.getElementById('modalClose'),content=document.getElementById('modalContent'),kicker=document.getElementById('modalKicker');
+function openModal(key){const d=modalData[key];if(!d)return;kicker.textContent=d.kicker;content.innerHTML=`<h3>${d.title}</h3><p>${d.copy}</p><div class="modal-grid">${d.boxes.map(b=>`<div class="modal-box"><strong>${b[0]}</strong><span>${b[1]}</span></div>`).join('')}</div><div class="modal-actions"><a href="#" onclick="event.preventDefault();alert('Prototype: connect GitHub or case page')">GitHub / Project ↗</a><a href="#" onclick="event.preventDefault();alert('Prototype: open long-form page')">Read more ↗</a></div>`;wrap.classList.add('open');document.body.style.overflow='hidden'}
+function closeModal(){wrap.classList.remove('open');document.body.style.overflow=''}
+document.querySelectorAll('[data-modal]').forEach(el=>el.addEventListener('click',()=>openModal(el.dataset.modal)));
+closeBtn.addEventListener('click',closeModal);wrap.addEventListener('click',e=>{if(e.target===wrap)closeModal()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+const io=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add('visible')}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+const back=document.querySelector('.backtop');window.addEventListener('scroll',()=>back.classList.toggle('show',window.scrollY>700));
+</script>
+</body>
+</html>
