@@ -133,10 +133,10 @@ footer{border-top:1px solid var(--line);padding:60px 0 36px}
     <a class="brand" href="#top">JK</a>
     <nav class="navlinks">
       <a href="#about">About</a>
-      <a href="#work">Work</a>
+      <a href="#work">Selected Work</a>
       <a href="#research">Research</a>
       <a href="#gnodus">Gnodus</a>
-      <a href="#writing">Writing</a>
+      
       <a href="#contact" class="pill">Contact</a>
     </nav>
   </div>
@@ -146,13 +146,14 @@ footer{border-top:1px solid var(--line);padding:60px 0 36px}
   <div class="shell">
     <section class="hero">
       <div class="reveal visible">
-        <div class="eyebrow">Personal site prototype · v0.1</div>
+        <div class="eyebrow">Personal site prototype · v0.4</div>
         <h1>Julia<br>Kewitz</h1>
-        <div class="hero-sub">Designing systems that turn knowledge into decisions.</div>
+        <div class="hero-sub">Turning complex knowledge into systems people can understand, challenge and use.</div>
         <p class="hero-copy">
-          I work with complex systems, data and expert knowledge. My background spans transportation,
-          decision support and applied analytics. I currently explore NLP and computational knowledge
-          representation while building Gnodus.
+          I work at the intersection of complex systems, applied AI and decision support.
+          My background spans more than fifteen years in transportation, logistics and operational systems,
+          while my current research explores how expert knowledge can be transformed into machine-usable forms
+          without losing the context, evidence and conditions that give it meaning.
         </p>
         <div class="hero-links">
           <a href="#" onclick="event.preventDefault();alert('Prototype: insert GitHub URL')">GitHub ↗</a>
@@ -165,7 +166,7 @@ footer{border-top:1px solid var(--line);padding:60px 0 36px}
         <div class="portrait-inner">
           <div class="portrait-note">
             <strong>Current focus</strong>
-            <span>Computable expert knowledge, NLP, semantic alignment and verifiable decision support.</span>
+            <span>How expert knowledge can be made usable by AI without losing what makes it reliable.</span>
           </div>
           <div class="monogram">JK</div>
         </div>
@@ -173,107 +174,103 @@ footer{border-top:1px solid var(--line);padding:60px 0 36px}
     </section>
   </div>
 
-  <section id="about">
-    <div class="shell">
-      <div class="section-head reveal">
-        <div class="section-index">01 · About</div>
-        <div>
-          <h2 class="section-title">One trajectory, several domains.</h2>
-          <p class="section-intro">The site does not force one job title. It makes the trajectory understandable: real-world systems → analytics → computational methods → knowledge systems.</p>
+  
+<section id="about">
+  <div class="shell">
+    <div class="section-head reveal">
+      <div class="section-index">01 · About</div>
+      <div>
+        <h2 class="section-title">From complex systems to computable knowledge.</h2>
+        <div class="section-intro" style="max-width:860px">
+          <p>I have spent more than fifteen years working with complex operational and decision-support problems across transportation and logistics.</p>
+          <p>Across very different projects, I kept encountering a similar problem: important knowledge is fragmented across data, documents, rules and people. Much of my work has involved making that complexity explicit — translating ambiguous requirements, constraints and expert knowledge into analytical models, system logic and decision-support structures.</p>
+          <p>Over time, this led me deeper into applied mathematics, data science and AI. During my MSc research, I developed a system for transforming oncology clinical guidelines into structured, source-linked knowledge. That work raised a broader question that now drives my research: <strong>what gets lost when expert knowledge is transformed into something a computer can use?</strong></p>
+          <p>I am now exploring how medical knowledge can remain meaningful, traceable and verifiable as it moves through extraction, representation, retrieval and use by AI systems.</p>
+          <p>In parallel, I am building <strong>Gnodus</strong>, an early-stage research-driven company exploring whether this same problem can become the basis for a useful technology and business.</p>
         </div>
       </div>
-      <div class="about-grid">
-        <article class="card reveal">
-          <div class="kicker">Background</div>
-          <h3>Complex systems</h3>
-          <p>15+ years across transportation, logistics, operations, planning and decision-support environments.</p>
-        </article>
-        <article class="card reveal">
-          <div class="kicker">How I work</div>
-          <h3>Structure before solutions</h3>
-          <p>I like turning messy systems into explicit models, data structures and decision logic people can interrogate.</p>
-        </article>
-        <article class="card reveal">
-          <div class="kicker">Direction</div>
-          <h3>Knowledge systems</h3>
-          <p>Current research explores how expert knowledge can remain contextual, verifiable and useful after becoming computational.</p>
-        </article>
-      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="work">
-    <div class="shell">
-      <div class="section-head reveal">
-        <div class="section-index">02 · Selected work</div>
-        <div>
-          <h2 class="section-title">Evidence, not a list of skills.</h2>
-          <p class="section-intro">Click any card. The prototype opens a floating detail window instead of sending you away from the page.</p>
-        </div>
-      </div>
-      <div class="work-grid">
-        <article class="card work-card reveal" data-modal="transport">
-          <div class="visual"></div>
-          <div class="work-body">
-            <div class="kicker">Professional work</div>
-            <h3>Transportation Decision Support</h3>
-            <p>Planning, operations and decision-support work across complex transport systems.</p>
-            <div class="tags"><span class="tag">Systems thinking</span><span class="tag">Operations</span><span class="tag">Decision support</span></div>
-            <div class="open-line"><span>Explore</span><span>↗</span></div>
-          </div>
-        </article>
-        <article class="card work-card reveal" data-modal="northcart">
-          <div class="visual"></div>
-          <div class="work-body">
-            <div class="kicker">Applied data engineering</div>
-            <h3>NorthCart Feature Pipeline</h3>
-            <p>A reproducible batch pipeline generating customer-level features while preventing future-data leakage.</p>
-            <div class="tags"><span class="tag">Python</span><span class="tag">Airflow</span><span class="tag">PostgreSQL</span></div>
-            <div class="open-line"><span>Explore</span><span>↗</span></div>
-          </div>
-        </article>
-        <article class="card work-card reveal" data-modal="ml">
-          <div class="visual"></div>
-          <div class="work-body">
-            <div class="kicker">Applied machine learning</div>
-            <h3>Demand Forecasting with ML</h3>
-            <p>End-to-end ML workflow with feature engineering, stability monitoring and model evaluation.</p>
-            <div class="tags"><span class="tag">CatBoost</span><span class="tag">PSI</span><span class="tag">Feature engineering</span></div>
-            <div class="open-line"><span>Explore</span><span>↗</span></div>
-          </div>
-        </article>
-        <article class="card work-card reveal" data-modal="clinical">
-          <div class="visual"></div>
-          <div class="work-body">
-            <div class="kicker">Independent research</div>
-            <h3>Clinical Knowledge Representation</h3>
-            <p>Experiments in extracting, aligning and representing clinical knowledge for verifiable decision support.</p>
-            <div class="tags"><span class="tag">NLP</span><span class="tag">NER</span><span class="tag">Ontologies</span><span class="tag">Knowledge graphs</span></div>
-            <div class="open-line"><span>Explore</span><span>↗</span></div>
-          </div>
-        </article>
+
+  
+<section id="work">
+  <div class="shell">
+    <div class="section-head reveal">
+      <div class="section-index">02 · Selected work</div>
+      <div>
+        <h2 class="section-title">A few projects that explain how I think and work.</h2>
+        <p class="section-intro">Not a complete portfolio — just the pieces that best connect my professional background, research and current direction.</p>
       </div>
     </div>
-  </section>
+    <div class="work-grid">
+      <article class="card work-card reveal" data-modal="clinical">
+        <div class="visual"></div>
+        <div class="work-body">
+          <div class="kicker">Research</div>
+          <h3>Medical Knowledge Representation</h3>
+          <p>Research on transforming oncology clinical guidelines into structured, source-linked knowledge while preserving context, evidence and traceability.</p>
+          <div class="tags"><span class="tag">Biomedical NLP</span><span class="tag">Knowledge graphs</span><span class="tag">Ontologies</span></div>
+          <div class="open-line"><span>Explore</span><span>↗</span></div>
+        </div>
+      </article>
+
+      <article class="card work-card reveal" data-modal="gnodusModal">
+        <div class="visual"></div>
+        <div class="work-body">
+          <div class="kicker">Building</div>
+          <h3>Gnodus</h3>
+          <p>An early-stage research-driven company exploring how expert knowledge can be made reliably usable by AI — and where that capability can become a real product.</p>
+          <div class="tags"><span class="tag">Knowledge quality</span><span class="tag">Applied AI</span><span class="tag">Decision support</span></div>
+          <div class="open-line"><span>Explore</span><span>↗</span></div>
+        </div>
+      </article>
+
+      <article class="card work-card reveal" data-modal="transport">
+        <div class="visual"></div>
+        <div class="work-body">
+          <div class="kicker">Professional work</div>
+          <h3>Decision Support Systems</h3>
+          <p>Designing functional and analytical logic for complex operational decision-support systems in transportation.</p>
+          <div class="tags"><span class="tag">Operational KPIs</span><span class="tag">System logic</span><span class="tag">Planning</span></div>
+          <div class="open-line"><span>Explore</span><span>↗</span></div>
+        </div>
+      </article>
+
+      <article class="card work-card reveal" data-modal="mlcollection">
+        <div class="visual"></div>
+        <div class="work-body">
+          <div class="kicker">Applied practice</div>
+          <h3>Applied ML & Data Engineering</h3>
+          <p>A collection of hands-on projects in machine learning, feature engineering, workflow orchestration and reproducible data systems.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Airflow</span><span class="tag">ML</span></div>
+          <div class="open-line"><span>Explore</span><span>↗</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
 
   <section id="research">
     <div class="shell">
       <div class="section-head reveal">
         <div class="section-index">03 · Research</div>
-        <div><h2 class="section-title">A research question instead of buzzwords.</h2></div>
+        <div><h2 class="section-title">What gets lost when expert knowledge becomes machine-usable?</h2></div>
       </div>
       <div class="research-panel reveal">
         <div>
           <div class="kicker">Current question</div>
-          <div class="research-question">How can expert knowledge become computable without losing context, provenance and meaning?</div>
+          <div class="research-question">How can expert knowledge become machine-usable without losing context, provenance and meaning?</div>
           <p class="section-intro">Clinical guidelines are the current research setting: a difficult, high-stakes domain where trustworthy knowledge representation matters.</p>
           <button class="pill" style="background:transparent;cursor:pointer;margin-top:12px" data-modal="research">Open research note ↗</button>
         </div>
         <div class="research-side">
-          <div class="research-chip"><strong>01 · Extraction</strong><span>Clinical entities, recommendations and contextual signals.</span></div>
-          <div class="research-chip"><strong>02 · Alignment</strong><span>Normalizing concepts across heterogeneous sources and terminologies.</span></div>
-          <div class="research-chip"><strong>03 · Representation</strong><span>Structures that preserve relationships, evidence and provenance.</span></div>
-          <div class="research-chip"><strong>04 · Verification</strong><span>Making outputs inspectable by experts instead of opaque.</span></div>
+          <div class="research-chip"><strong>01 · Preserve</strong><span>What information must travel with a knowledge claim?</span></div>
+          <div class="research-chip"><strong>02 · Represent</strong><span>How should context, evidence and applicability be encoded?</span></div>
+          <div class="research-chip"><strong>03 · Retrieve</strong><span>How can systems recover the right knowledge together with its qualifications?</span></div>
+          <div class="research-chip"><strong>04 · Evaluate</strong><span>How do we measure knowledge quality beyond extraction accuracy?</span></div>
         </div>
       </div>
     </div>
@@ -288,47 +285,10 @@ footer{border-top:1px solid var(--line);padding:60px 0 36px}
       <div class="gnodus reveal">
         <div class="gnodus-logo">gnodus</div>
         <div class="gnodus-copy">
-          <div class="kicker" style="color:#c58a68">Research-driven initiative</div>
-          <h3>Verifiable knowledge systems for expert domains.</h3>
-          <p>Gnodus explores how heterogeneous expert knowledge can be transformed into transparent, inspectable decision-support systems. The current research laboratory is clinical knowledge.</p>
+          <div class="kicker" style="color:#c58a68">Early-stage research-driven venture</div>
+          <h3>From information access to knowledge quality.</h3>
+          <p>Gnodus is an early-stage company being built around a simple problem: giving AI access to information is not enough if the context, evidence and conditions that make that information reliable are lost along the way.<br><br>Medicine is the first research and application domain. The current work focuses on understanding where this problem creates real value for expert users and what part of it can become a reusable technology.</p>
           <button class="light-button" data-modal="gnodusModal">Explore Gnodus ↗</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="writing">
-    <div class="shell">
-      <div class="section-head reveal">
-        <div class="section-index">05 · Writing & talks</div>
-        <div>
-          <h2 class="section-title">A public record of ideas over time.</h2>
-          <p class="section-intro">This can start small and later absorb publications, MBA writing, talks, research notes and conference appearances.</p>
-        </div>
-      </div>
-      <div class="writing-list reveal">
-        <a href="#" class="writing-item" onclick="event.preventDefault();alert('Placeholder: research note')">
-          <div class="writing-year">2026</div><div class="writing-title">From text to computable clinical knowledge</div><div class="writing-type">Research note ↗</div>
-        </a>
-        <a href="#" class="writing-item" onclick="event.preventDefault();alert('Placeholder: talk')">
-          <div class="writing-year">2026</div><div class="writing-title">Decision systems beyond dashboards</div><div class="writing-type">Talk ↗</div>
-        </a>
-        <a href="#" class="writing-item" onclick="event.preventDefault();alert('Placeholder: MBA publication')">
-          <div class="writing-year">MBA</div><div class="writing-title">Selected publication from earlier work</div><div class="writing-type">Article ↗</div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="shell">
-      <div class="section-head reveal">
-        <div class="section-index">06 · Currently curious about</div>
-        <div>
-          <h2 class="section-title">A little less CV, a little more human.</h2>
-          <div class="currently" style="margin-top:24px">
-            <span>Computable knowledge</span><span>Clinical decision systems</span><span>Mathematical thinking</span><span>Industrial AI</span><span>Research methods</span>
-          </div>
         </div>
       </div>
     </div>
@@ -356,12 +316,13 @@ footer{border-top:1px solid var(--line);padding:60px 0 36px}
 
 <script>
 const modalData={
-transport:{kicker:"Professional work",title:"Transportation Decision Support",copy:"A placeholder for selected professional work that can be described without exposing confidential client information. The purpose is to show the kinds of systems, decisions and operational complexity you have worked with — not to reproduce a CV.",boxes:[["Problem space","Complex planning, operations, capacity, infrastructure and stakeholder decisions."],["Contribution","Structuring ambiguity, defining decision logic, translating domain constraints into usable analytical systems."],["Evidence","Selected anonymized cases, visual frameworks or public-facing artifacts can live here later."],["Next layer","Could link to a longer case page when enough public material exists."]]},
+transport:{kicker:"Professional work",title:"Decision Support Systems",copy:"A placeholder for selected professional work that can be described without exposing confidential client information. The purpose is to show the kinds of systems, decisions and operational complexity you have worked with — not to reproduce a CV.",boxes:[["Problem space","Complex planning, operations, capacity, infrastructure and stakeholder decisions."],["Contribution","Structuring ambiguity, defining decision logic, translating domain constraints into usable analytical systems."],["Evidence","Selected anonymized cases, visual frameworks or public-facing artifacts can live here later."],["Next layer","Could link to a longer case page when enough public material exists."]]},
 northcart:{kicker:"Applied data engineering · Yandex Practicum",title:"NorthCart — Batch Feature Pipeline",copy:"A reproducible Airflow pipeline that creates customer-level behavioural features using time-window logic and a run-date cutoff to prevent future-data leakage.",boxes:[["Why it matters","Shows work with actual pipeline logic rather than only notebook analysis."],["Stack","Python, Airflow, PostgreSQL, feature engineering."],["Technical idea","7-day and 30-day windows, reproducibility, run_date discipline."],["Public proof","GitHub repository, README, architecture diagram and selected screenshots."]]},
 ml:{kicker:"Applied machine learning · Yandex Practicum",title:"Demand Forecasting with ML",copy:"An end-to-end applied machine-learning project covering data preparation, feature creation, feature stability monitoring and model evaluation.",boxes:[["Problem","Forecasting under changing data distributions."],["Methods","Feature engineering, PSI monitoring, CatBoostRegressor, MAE/RMSE evaluation."],["Signal","A compact project that demonstrates structured ML thinking."],["Public proof","Repository, notebook, short write-up and model card-style summary."]]},
-clinical:{kicker:"Independent research",title:"Clinical Knowledge Representation",copy:"Research on how heterogeneous clinical guideline text can be transformed into representations that remain semantically aligned, contextual and verifiable.",boxes:[["Research setting","Oncology clinical guidelines."],["Methods","Biomedical NER, semantic normalization, ontologies, knowledge graphs."],["Core concern","Preserving context, provenance, recommendation logic and evidence."],["Public proof","Research notes, experiment summaries, selected code and prototype."]]},
-research:{kicker:"Research note",title:"Computable Expert Knowledge",copy:"The long-term question is broader than one model or one domain: how can expert knowledge be made computationally useful without stripping away the context that makes it trustworthy?",boxes:[["1. Extract","Identify entities, conditions, recommendations and contextual qualifiers."],["2. Align","Normalize heterogeneous terms and concepts."],["3. Represent","Encode relationships, provenance, logic and evidence."],["4. Validate","Keep experts in the verification loop."]]},
-gnodusModal:{kicker:"Building Gnodus",title:"From research problem to knowledge system",copy:"Gnodus is positioned as a research-driven initiative rather than another generic AI agent. The object of interest is how expert knowledge becomes transparent, verifiable and practically usable in decision-support systems.",boxes:[["Not the product","A generic chatbot, generic LLM layer or consulting service."],["Research object","Knowledge representation, context, provenance, evidence and expert validation."],["First domain","Clinical decision support, starting with oncology guidelines."],["Later","Other complex expert domains can use the same underlying knowledge-system principles."]]}
+clinical:{kicker:"Research",title:"Medical Knowledge Representation",copy:"Research on how oncology clinical guidelines can be transformed into structured, source-linked knowledge while remaining contextual, traceable and verifiable.",boxes:[["Research setting","Oncology clinical guidelines."],["Methods","Biomedical NER, semantic normalization, ontologies, knowledge graphs."],["Core concern","Preserving context, provenance, recommendation logic and evidence."],["Public proof","Research notes, experiment summaries, selected code and prototype."]]},
+mlcollection:{kicker:"Applied ML & Data Engineering",title:"Hands-on technical projects",copy:"A collection of applied projects used to deepen practical skills in machine learning, feature engineering, workflow orchestration and reproducible data systems.",boxes:[["NorthCart","A batch feature pipeline built around reproducible time windows and run-date logic."],["Applied ML","Model development, feature engineering, stability monitoring and evaluation."],["Why it matters","These projects show implementation practice without pretending to be flagship research."],["Public proof","GitHub repositories, READMEs and selected technical notes."]]},
+research:{kicker:"Research note",title:"Computable Expert Knowledge",copy:"The long-term question is broader than one model or one domain: what must be preserved, represented, retrieved and evaluated so that expert knowledge remains useful and challengeable when used by AI systems?",boxes:[["Preserve","Identify the context, evidence and qualifications that must travel with a knowledge claim."],["Represent","Encode meaning, provenance and applicability without flattening important distinctions."],["Retrieve","Recover the right knowledge together with its conditions and caveats."],["Evaluate","Measure knowledge quality beyond extraction accuracy alone."]]},
+gnodusModal:{kicker:"Building Gnodus",title:"From research problem to company hypothesis",copy:"Gnodus is an early-stage company exploring whether a recurring problem in expert AI systems can become the basis for reusable technology and a viable business.",boxes:[["Problem","AI systems can access increasing amounts of expert information, but important context, evidence and applicability can be lost between source and use."],["Current hypothesis","Knowledge quality may require a layer that preserves and exposes these properties for downstream AI systems and expert users."],["First domain","Medicine, where incomplete or decontextualised knowledge is particularly consequential."],["Current stage","Research, customer discovery and product hypothesis development."]]}
 };
 const wrap=document.getElementById('modalWrap'),closeBtn=document.getElementById('modalClose'),content=document.getElementById('modalContent'),kicker=document.getElementById('modalKicker');
 function openModal(key){const d=modalData[key];if(!d)return;kicker.textContent=d.kicker;content.innerHTML=`<h3>${d.title}</h3><p>${d.copy}</p><div class="modal-grid">${d.boxes.map(b=>`<div class="modal-box"><strong>${b[0]}</strong><span>${b[1]}</span></div>`).join('')}</div><div class="modal-actions"><a href="#" onclick="event.preventDefault();alert('Prototype: connect GitHub or case page')">GitHub / Project ↗</a><a href="#" onclick="event.preventDefault();alert('Prototype: open long-form page')">Read more ↗</a></div>`;wrap.classList.add('open');document.body.style.overflow='hidden'}
