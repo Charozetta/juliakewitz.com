@@ -81,10 +81,8 @@ h1{font-size:clamp(3.7rem,7vw,6.9rem);line-height:.92;letter-spacing:-.045em;mar
   width:100%;
   height:100%;
   object-fit:cover;
-  object-position:center 18%;
+  object-position:center center;
   display:block;
-  transform:scale(0.90);
-  transform-origin:center center;
 }
 .portrait-card::after{
   content:"";
@@ -170,7 +168,7 @@ footer{border-top:1px solid var(--line);padding:60px 0 36px}
   .hero{min-height:auto}
   .section-head{grid-template-columns:1fr;gap:10px}
   .about-grid,.work-grid{grid-template-columns:1fr}
-  .portrait-card{min-height:390px}
+  .portrait-card{min-height:480px}
   .writing-item{grid-template-columns:80px 1fr}.writing-type{display:none}
 }
 @media(max-width:600px){
