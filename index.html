@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Julia Kewitz — Complex Systems, Applied AI & Decision Support</title>
+<title>Julia Kewitz — Prototype</title>
 <style>
 :root{
   --bg:#f4f0e8; --paper:#fcfaf6; --ink:#132033; --muted:#6e6a65;
@@ -32,19 +32,64 @@ h1{font-size:clamp(3.7rem,7vw,6.9rem);line-height:.92;letter-spacing:-.045em;mar
 .hero-links{display:flex;flex-wrap:wrap;gap:10px}
 .hero-links a{border:1px solid var(--line);background:rgba(255,255,255,.48);padding:10px 14px;border-radius:999px;transition:.2s}
 .hero-links a:hover{transform:translateY(-2px);border-color:var(--ink)}
+
+.email-trigger{
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.48);
+  padding:10px 14px;
+  border-radius:999px;
+  cursor:pointer;
+  color:var(--ink);
+  transition:.2s;
+}
+.email-trigger:hover{transform:translateY(-2px);border-color:var(--ink)}
+.email-reveal{
+  display:none;
+  align-items:center;
+  gap:8px;
+  margin-top:12px;
+  padding:10px 12px;
+  border:1px solid var(--line);
+  background:var(--paper);
+  border-radius:14px;
+  width:max-content;
+  max-width:100%;
+  box-shadow:0 8px 24px rgba(0,0,0,.06);
+}
+.email-reveal.show{display:flex}
+.email-address{font-size:.92rem;word-break:break-all}
+.copy-email{
+  border:0;
+  background:transparent;
+  color:var(--accent);
+  font-weight:700;
+  cursor:pointer;
+  padding:2px 4px;
+}
+
 .portrait-card{
   min-height:520px;
   border-radius:30px;
   position:relative;
   overflow:hidden;
   box-shadow:0 18px 50px rgba(0,0,0,.10);
-  background-color:#d8d0c4;
-  background-image:
-    linear-gradient(to bottom, rgba(19,32,51,.02), rgba(19,32,51,.18)),
-    url("assets/images/julia-kewitz.jpg");
-  background-size:cover;
-  background-position:center top;
-  background-repeat:no-repeat;
+  background:#d8d0c4;
+}
+.portrait-photo{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center top;
+  display:block;
+}
+.portrait-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to bottom, rgba(19,32,51,.02), rgba(19,32,51,.18));
+  pointer-events:none;
 }
 .portrait-inner{position:absolute;inset:28px;border:1px solid rgba(19,32,51,.13);border-radius:24px;padding:30px;display:flex;align-items:flex-end}
 .portrait-note{background:rgba(251,250,247,.86);padding:18px 20px;border:1px solid rgba(19,32,51,.09);border-radius:18px;max-width:330px}
@@ -155,7 +200,7 @@ footer{border-top:1px solid var(--line);padding:60px 0 36px}
   <div class="shell">
     <section class="hero">
       <div class="reveal visible">
-        <div class="eyebrow">Complex systems · Applied AI · Decision support</div>
+        <div class="eyebrow">Personal site prototype · v0.4</div>
         <h1>Julia<br>Kewitz</h1>
         <div class="hero-sub">Turning complex knowledge into systems people can understand, challenge and use.</div>
         <p class="hero-copy">
@@ -165,13 +210,18 @@ footer{border-top:1px solid var(--line);padding:60px 0 36px}
           without losing the context, evidence, and conditions that give it meaning.
         </p>
         <div class="hero-links">
-          <a href="https://github.com/Charozetta" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-          <a href="https://www.linkedin.com/in/iuliiakozina" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
-          <a href="assets/documents/Julia_Kewitz_CV.pdf" target="_blank" rel="noopener noreferrer">CV ↗</a>
-          <a href="mailto:contact@gnodus.ai?subject=Contact%20via%20juliakewitz.com">Email ↗</a>
+          <a href="https://github.com/Charozetta" target="_blank">GitHub ↗</a>
+          <a href="https://www.linkedin.com/in/iuliiakozina" target="_blank">LinkedIn ↗</a>
+          <a href="assets/documents/Julia_Kewitz_CV.pdf" target="_blank">CV ↗</a>
+          <button class="email-trigger" type="button" data-email-toggle="heroEmail">Email ↗</button>
+        </div>
+        <div class="email-reveal" id="heroEmail">
+          <span class="email-address">contact@gnodus.ai</span>
+          <button class="copy-email" type="button" data-copy-email>Copy</button>
         </div>
       </div>
       <div class="portrait-card reveal">
+        <img class="portrait-photo" src="assets/images/julia.jpg" alt="Julia Kewitz">
         <div class="portrait-inner">
           <div class="portrait-note">
             <strong>Current focus</strong>
@@ -307,12 +357,7 @@ footer{border-top:1px solid var(--line);padding:60px 0 36px}
 <footer id="contact">
   <div class="shell footer-grid">
     <div><div class="footer-name">Julia Kewitz</div><div style="color:#68717a;margin-top:6px">juliakewitz.com</div></div>
-    <div class="footer-links">
-      <a href="https://github.com/Charozetta" target="_blank" rel="noopener noreferrer">GitHub</a>
-      <a href="https://www.linkedin.com/in/iuliiakozina" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      <a href="assets/documents/Julia_Kewitz_CV.pdf" target="_blank" rel="noopener noreferrer">CV</a>
-      <a href="mailto:contact@gnodus.ai?subject=Contact%20via%20juliakewitz.com">Email</a>
-    </div>
+    <div class="footer-links"><a href="#">GitHub</a><a href="#">LinkedIn</a><a href="#">CV</a><button class="email-trigger" type="button" data-email-toggle="footerEmail" style="padding:0;border:0;background:transparent;border-radius:0">Email</button></div>
   </div>
 </footer>
 
@@ -334,26 +379,39 @@ transport:{kicker:"Professional work",title:"Decision Support Systems",copy:"A p
 northcart:{kicker:"Applied data engineering · Yandex Practicum",title:"NorthCart — Batch Feature Pipeline",copy:"A reproducible Airflow pipeline that creates customer-level behavioural features using time-window logic and a run-date cutoff to prevent future-data leakage.",boxes:[["Why it matters","Shows work with actual pipeline logic rather than only notebook analysis."],["Stack","Python, Airflow, PostgreSQL, feature engineering."],["Technical idea","7-day and 30-day windows, reproducibility, run_date discipline."],["Public proof","GitHub repository, README, architecture diagram and selected screenshots."]]},
 ml:{kicker:"Applied machine learning · Yandex Practicum",title:"Demand Forecasting with ML",copy:"An end-to-end applied machine-learning project covering data preparation, feature creation, feature stability monitoring and model evaluation.",boxes:[["Problem","Forecasting under changing data distributions."],["Methods","Feature engineering, PSI monitoring, CatBoostRegressor, MAE/RMSE evaluation."],["Signal","A compact project that demonstrates structured ML thinking."],["Public proof","Repository, notebook, short write-up and model card-style summary."]]},
 clinical:{kicker:"Research",title:"Medical Knowledge Representation",copy:"Research on how oncology clinical guidelines can be transformed into structured, source-linked knowledge while remaining contextual, traceable and verifiable.",boxes:[["Research setting","Oncology clinical guidelines."],["Methods","Biomedical NER, semantic normalization, ontologies, knowledge graphs."],["Core concern","Preserving context, provenance, recommendation logic and evidence."],["Public proof","Research notes, experiment summaries, selected code and prototype."]]},
-mlcollection:{kicker:"Applied ML & Data Engineering",title:"Hands-on technical projects",copy:"A collection of applied projects used to deepen practical skills in machine learning, feature engineering, workflow orchestration and reproducible data systems.",boxes:[["NorthCart","A batch feature pipeline built around reproducible time windows and run-date logic."],["Applied ML","Model development, feature engineering, stability monitoring and evaluation."],["Why it matters","These projects show implementation practice without pretending to be flagship research."],["Public proof","GitHub repositories, READMEs and selected technical notes."]],links:[{label:"View GitHub ↗",url:"https://github.com/Charozetta",external:true}]},
+mlcollection:{kicker:"Applied ML & Data Engineering",title:"Hands-on technical projects",copy:"A collection of applied projects used to deepen practical skills in machine learning, feature engineering, workflow orchestration and reproducible data systems.",boxes:[["NorthCart","A batch feature pipeline built around reproducible time windows and run-date logic."],["Applied ML","Model development, feature engineering, stability monitoring and evaluation."],["Why it matters","These projects show implementation practice without pretending to be flagship research."],["Public proof","GitHub repositories, READMEs and selected technical notes."]]},
 research:{kicker:"Research note",title:"Computable Expert Knowledge",copy:"The long-term question is broader than one model or one domain: what must be preserved, represented, retrieved and evaluated so that expert knowledge remains useful and challengeable when used by AI systems?",boxes:[["Preserve","Identify the context, evidence and qualifications that must travel with a knowledge claim."],["Represent","Encode meaning, provenance and applicability without flattening important distinctions."],["Retrieve","Recover the right knowledge together with its conditions and caveats."],["Evaluate","Measure knowledge quality beyond extraction accuracy alone."]]},
 gnodusModal:{kicker:"Building Gnodus",title:"From research problem to company hypothesis",copy:"Gnodus is an early-stage company exploring whether a recurring problem in expert AI systems can become the basis for reusable technology and a viable business.",boxes:[["Problem","AI systems can access increasing amounts of expert information, but important context, evidence and applicability can be lost between source and use."],["Current hypothesis","Knowledge quality may require a layer that preserves and exposes these properties for downstream AI systems and expert users."],["First domain","Medicine, where incomplete or decontextualised knowledge is particularly consequential."],["Current stage","Research, customer discovery and product hypothesis development."]]}
 };
 const wrap=document.getElementById('modalWrap'),closeBtn=document.getElementById('modalClose'),content=document.getElementById('modalContent'),kicker=document.getElementById('modalKicker');
-function openModal(key){
-  const d=modalData[key];
-  if(!d)return;
-  kicker.textContent=d.kicker;
-  const actions = d.links ? `<div class="modal-actions">${d.links.map(l=>`<a href="${l.url}" ${l.external ? 'target="_blank" rel="noopener noreferrer"' : ''}>${l.label}</a>`).join('')}</div>` : '';
-  content.innerHTML=`<h3>${d.title}</h3><p>${d.copy}</p><div class="modal-grid">${d.boxes.map(b=>`<div class="modal-box"><strong>${b[0]}</strong><span>${b[1]}</span></div>`).join('')}</div>${actions}`;
-  wrap.classList.add('open');
-  document.body.style.overflow='hidden';
-}
+function openModal(key){const d=modalData[key];if(!d)return;kicker.textContent=d.kicker;content.innerHTML=`<h3>${d.title}</h3><p>${d.copy}</p><div class="modal-grid">${d.boxes.map(b=>`<div class="modal-box"><strong>${b[0]}</strong><span>${b[1]}</span></div>`).join('')}</div><div class="modal-actions"><a href="#" onclick="event.preventDefault();alert('Prototype: connect GitHub or case page')">GitHub / Project ↗</a><a href="#" onclick="event.preventDefault();alert('Prototype: open long-form page')">Read more ↗</a></div>`;wrap.classList.add('open');document.body.style.overflow='hidden'}
 function closeModal(){wrap.classList.remove('open');document.body.style.overflow=''}
 document.querySelectorAll('[data-modal]').forEach(el=>el.addEventListener('click',()=>openModal(el.dataset.modal)));
 closeBtn.addEventListener('click',closeModal);wrap.addEventListener('click',e=>{if(e.target===wrap)closeModal()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
 const io=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add('visible')}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 const back=document.querySelector('.backtop');window.addEventListener('scroll',()=>back.classList.toggle('show',window.scrollY>700));
+
+document.querySelectorAll('[data-email-toggle]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const box=document.getElementById(btn.dataset.emailToggle);
+    if(box) box.classList.toggle('show');
+  });
+});
+document.querySelectorAll('[data-copy-email]').forEach(btn=>{
+  btn.addEventListener('click',async()=>{
+    const email='contact@gnodus.ai';
+    try{
+      await navigator.clipboard.writeText(email);
+      const old=btn.textContent;
+      btn.textContent='Copied';
+      setTimeout(()=>btn.textContent=old,1400);
+    }catch(e){
+      btn.textContent=email;
+    }
+  });
+});
+
 </script>
 </body>
 </html>
