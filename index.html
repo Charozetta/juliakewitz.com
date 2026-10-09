@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Julia Kewitz — Prototype</title>
+<title>Julia Kewitz — Complex Systems, Applied AI & Decision Support</title>
 <style>
 :root{
   --bg:#f4f0e8; --paper:#fcfaf6; --ink:#132033; --muted:#6e6a65;
@@ -91,7 +91,7 @@ h1{font-size:clamp(3.7rem,7vw,6.9rem);line-height:.92;letter-spacing:-.045em;mar
   background:linear-gradient(to bottom, rgba(19,32,51,.02), rgba(19,32,51,.18));
   pointer-events:none;
 }
-.portrait-inner{position:absolute;inset:28px;border:1px solid rgba(19,32,51,.13);border-radius:24px;padding:30px;display:flex;align-items:flex-end}
+.portrait-inner{position:absolute;inset:28px;border-radius:24px;padding:30px;display:flex;align-items:flex-end}
 .portrait-note{background:rgba(251,250,247,.86);padding:18px 20px;border:1px solid rgba(19,32,51,.09);border-radius:18px;max-width:330px}
 .portrait-note strong{display:block;margin-bottom:6px}
 .monogram{display:none}
@@ -160,6 +160,16 @@ footer{border-top:1px solid var(--line);padding:60px 0 36px}
 .modal-box strong{display:block;margin-bottom:6px}
 .modal-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
 .modal-actions a{border:1px solid var(--ink);padding:10px 13px;border-radius:999px;font-size:.9rem}
+
+.modal-projects{margin-top:24px}
+.modal-projects-title{font-size:.74rem;text-transform:uppercase;letter-spacing:.11em;color:var(--accent);font-weight:700;margin-bottom:10px}
+.modal-project-link{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;padding:14px 0;border-top:1px solid var(--line);transition:.2s}
+.modal-project-link:last-child{border-bottom:1px solid var(--line)}
+.modal-project-link:hover{padding-left:6px}
+.modal-project-copy strong{display:block;font-family:Georgia,"Times New Roman",serif;font-size:1.08rem;margin-bottom:3px}
+.modal-project-copy span{color:#66707a;font-size:.88rem}
+.modal-project-arrow{flex:0 0 auto;color:var(--accent);font-weight:700}
+
 .reveal{opacity:0;transform:translateY(24px);transition:.7s ease}
 .reveal.visible{opacity:1;transform:none}
 @media(max-width:900px){
@@ -200,7 +210,7 @@ footer{border-top:1px solid var(--line);padding:60px 0 36px}
   <div class="shell">
     <section class="hero">
       <div class="reveal visible">
-        <div class="eyebrow">Personal site prototype · v0.4</div>
+        <div class="eyebrow">Complex systems · Applied AI · Decision support</div>
         <h1>Julia<br>Kewitz</h1>
         <div class="hero-sub">Turning complex knowledge into systems people can understand, challenge, and use.</div>
         <p class="hero-copy">
@@ -210,9 +220,9 @@ footer{border-top:1px solid var(--line);padding:60px 0 36px}
           without losing the context, evidence, and conditions that give it meaning.
         </p>
         <div class="hero-links">
-          <a href="https://github.com/Charozetta" target="_blank">GitHub ↗</a>
-          <a href="https://www.linkedin.com/in/iuliiakozina" target="_blank">LinkedIn ↗</a>
-          <a href="assets/documents/Julia_Kewitz_CV.pdf" target="_blank">CV ↗</a>
+          <a href="https://github.com/Charozetta" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          <a href="https://www.linkedin.com/in/iuliiakozina" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          <a href="assets/documents/Julia_Kewitz_CV.pdf" target="_blank" rel="noopener noreferrer">CV ↗</a>
           <button class="email-trigger" type="button" data-email-toggle="heroEmail">Email ↗</button>
         </div>
         <div class="email-reveal" id="heroEmail">
@@ -254,23 +264,46 @@ footer{border-top:1px solid var(--line);padding:60px 0 36px}
 
 
   
+
 <section id="work">
   <div class="shell">
     <div class="section-head reveal">
       <div class="section-index">02 · Selected work</div>
       <div>
-        <h2 class="section-title">A few projects that explain how I think and work.</h2>
-        <p class="section-intro">Not a complete portfolio; just the pieces that best connect my professional background, research and current direction.</p>
+        <h2 class="section-title">Four areas that connect my research, technical practice, and real-world systems work.</h2>
+        <p class="section-intro">A curated view of the work that best explains how I think — with direct links to selected repositories where they add useful evidence.</p>
       </div>
     </div>
     <div class="work-grid">
-      <article class="card work-card reveal" data-modal="clinical">
+      <article class="card work-card reveal" data-modal="medical">
         <div class="visual"></div>
         <div class="work-body">
           <div class="kicker">Research</div>
-          <h3>Medical Knowledge Representation</h3>
-          <p>Research on transforming oncology clinical guidelines into structured, source-linked knowledge while preserving context, evidence, and traceability.</p>
-          <div class="tags"><span class="tag">Biomedical NLP</span><span class="tag">Knowledge graphs</span><span class="tag">Ontologies</span></div>
+          <h3>Medical Knowledge & AI Research</h3>
+          <p>Clinical NLP and knowledge representation work focused on turning guideline knowledge into structured, traceable and verifiable forms.</p>
+          <div class="tags"><span class="tag">Clinical NLP</span><span class="tag">Knowledge graphs</span><span class="tag">NER</span></div>
+          <div class="open-line"><span>Explore</span><span>↗</span></div>
+        </div>
+      </article>
+
+      <article class="card work-card reveal" data-modal="language">
+        <div class="visual"></div>
+        <div class="work-body">
+          <div class="kicker">Technical practice</div>
+          <h3>Language, Retrieval & Representation</h3>
+          <p>Experiments in language modelling, dense retrieval, semantic representation and multimodal search.</p>
+          <div class="tags"><span class="tag">LLMs</span><span class="tag">Dense retrieval</span><span class="tag">Transformers</span></div>
+          <div class="open-line"><span>Explore</span><span>↗</span></div>
+        </div>
+      </article>
+
+      <article class="card work-card reveal" data-modal="decision">
+        <div class="visual"></div>
+        <div class="work-body">
+          <div class="kicker">Applied systems</div>
+          <h3>Decision Systems & Applied ML</h3>
+          <p>Analytical systems where models, business logic and operational constraints support real decisions in risk, pricing, auctions and planning.</p>
+          <div class="tags"><span class="tag">Decision support</span><span class="tag">Applied ML</span><span class="tag">Business logic</span></div>
           <div class="open-line"><span>Explore</span><span>↗</span></div>
         </div>
       </article>
@@ -280,36 +313,15 @@ footer{border-top:1px solid var(--line);padding:60px 0 36px}
         <div class="work-body">
           <div class="kicker">Building</div>
           <h3>Gnodus</h3>
-          <p>An early-stage research-driven company exploring how expert knowledge can be made reliably usable by AI, and where that capability can become a real product.</p>
+          <p>An early-stage research-driven company exploring how expert knowledge can be made reliably usable by AI — and where that capability can become a real product.</p>
           <div class="tags"><span class="tag">Knowledge quality</span><span class="tag">Applied AI</span><span class="tag">Decision support</span></div>
-          <div class="open-line"><span>Explore</span><span>↗</span></div>
-        </div>
-      </article>
-
-      <article class="card work-card reveal" data-modal="transport">
-        <div class="visual"></div>
-        <div class="work-body">
-          <div class="kicker">Professional work</div>
-          <h3>Decision Support Systems</h3>
-          <p>Designing functional and analytical logic for complex operational decision-support systems in transportation.</p>
-          <div class="tags"><span class="tag">Operational KPIs</span><span class="tag">System logic</span><span class="tag">Planning</span></div>
-          <div class="open-line"><span>Explore</span><span>↗</span></div>
-        </div>
-      </article>
-
-      <article class="card work-card reveal" data-modal="mlcollection">
-        <div class="visual"></div>
-        <div class="work-body">
-          <div class="kicker">Applied practice</div>
-          <h3>Applied ML & Data Engineering</h3>
-          <p>A collection of hands-on projects in machine learning, feature engineering, workflow orchestration, and reproducible data systems.</p>
-          <div class="tags"><span class="tag">Python</span><span class="tag">Airflow</span><span class="tag">ML</span></div>
           <div class="open-line"><span>Explore</span><span>↗</span></div>
         </div>
       </article>
     </div>
   </div>
 </section>
+
 
 
   <section id="research">
@@ -357,7 +369,7 @@ footer{border-top:1px solid var(--line);padding:60px 0 36px}
 <footer id="contact">
   <div class="shell footer-grid">
     <div><div class="footer-name">Julia Kewitz</div><div style="color:#68717a;margin-top:6px">juliakewitz.com</div></div>
-    <div class="footer-links"><a href="#">GitHub</a><a href="#">LinkedIn</a><a href="#">CV</a><button class="email-trigger" type="button" data-email-toggle="footerEmail" style="padding:0;border:0;background:transparent;border-radius:0">Email</button></div>
+    <div class="footer-links"><a href="https://github.com/Charozetta" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/iuliiakozina" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="assets/documents/Julia_Kewitz_CV.pdf" target="_blank" rel="noopener noreferrer">CV</a><button class="email-trigger" type="button" data-email-toggle="footerEmail" style="padding:0;border:0;background:transparent;border-radius:0">Email</button></div>
   </div>
 </footer>
 
@@ -375,16 +387,22 @@ footer{border-top:1px solid var(--line);padding:60px 0 36px}
 
 <script>
 const modalData={
-transport:{kicker:"Professional work",title:"Decision Support Systems",copy:"A placeholder for selected professional work that can be described without exposing confidential client information. The purpose is to show the kinds of systems, decisions and operational complexity you have worked with — not to reproduce a CV.",boxes:[["Problem space","Complex planning, operations, capacity, infrastructure and stakeholder decisions."],["Contribution","Structuring ambiguity, defining decision logic, translating domain constraints into usable analytical systems."],["Evidence","Selected anonymized cases, visual frameworks or public-facing artifacts can live here later."],["Next layer","Could link to a longer case page when enough public material exists."]]},
-northcart:{kicker:"Applied data engineering · Yandex Practicum",title:"NorthCart — Batch Feature Pipeline",copy:"A reproducible Airflow pipeline that creates customer-level behavioural features using time-window logic and a run-date cutoff to prevent future-data leakage.",boxes:[["Why it matters","Shows work with actual pipeline logic rather than only notebook analysis."],["Stack","Python, Airflow, PostgreSQL, feature engineering."],["Technical idea","7-day and 30-day windows, reproducibility, run_date discipline."],["Public proof","GitHub repository, README, architecture diagram and selected screenshots."]]},
-ml:{kicker:"Applied machine learning · Yandex Practicum",title:"Demand Forecasting with ML",copy:"An end-to-end applied machine-learning project covering data preparation, feature creation, feature stability monitoring and model evaluation.",boxes:[["Problem","Forecasting under changing data distributions."],["Methods","Feature engineering, PSI monitoring, CatBoostRegressor, MAE/RMSE evaluation."],["Signal","A compact project that demonstrates structured ML thinking."],["Public proof","Repository, notebook, short write-up and model card-style summary."]]},
-clinical:{kicker:"Research",title:"Medical Knowledge Representation",copy:"Research on how oncology clinical guidelines can be transformed into structured, source-linked knowledge while remaining contextual, traceable and verifiable.",boxes:[["Research setting","Oncology clinical guidelines."],["Methods","Biomedical NER, semantic normalization, ontologies, knowledge graphs."],["Core concern","Preserving context, provenance, recommendation logic and evidence."],["Public proof","Research notes, experiment summaries, selected code and prototype."]]},
-mlcollection:{kicker:"Applied ML & Data Engineering",title:"Hands-on technical projects",copy:"A collection of applied projects used to deepen practical skills in machine learning, feature engineering, workflow orchestration and reproducible data systems.",boxes:[["NorthCart","A batch feature pipeline built around reproducible time windows and run-date logic."],["Applied ML","Model development, feature engineering, stability monitoring and evaluation."],["Why it matters","These projects show implementation practice without pretending to be flagship research."],["Public proof","GitHub repositories, READMEs and selected technical notes."]]},
+medical:{kicker:"Medical Knowledge & AI Research",title:"Clinical knowledge as a computational object",copy:"Research focused on how clinical guideline knowledge can be extracted, normalised and represented without losing the context, evidence and traceability that make it useful.",boxes:[["Research focus","Clinical knowledge extraction, normalisation, representation and verification."],["Why it matters","Medical AI needs more than information access: meaning, provenance and applicability must survive transformation."],["Current domain","Oncology clinical guidelines in English and Russian."],["Role in my work","This is the research line most directly connected to my current questions about knowledge quality."]],projects:[{title:"Master Thesis — Medical Knowledge Graph",subtitle:"87 NCCN oncology guidelines · NLP · Neo4j · Graph RAG",url:"https://github.com/Charozetta/Master-Thesis"},{title:"W2NER — Clinical NER",subtitle:"Russian clinical guidelines · custom labelled dataset · multilingual BERT",url:"https://github.com/Charozetta/W2NER_Clinical_NER"}]},
+language:{kicker:"Language, Retrieval & Representation",title:"How information is represented, retrieved and generated",copy:"A set of technical experiments across language modelling, dense retrieval and multimodal representation.",boxes:[["Language models","Training small models from scratch and adapting pretrained models."],["Retrieval","Dense semantic search over scientific literature."],["Representation learning","Text, image and multimodal embeddings."],["Purpose","Technical depth that supports my broader work on knowledge systems."]],projects:[{title:"arXiv Dense Retrieval",subtitle:"BGE embeddings · FAISS · MRR@5 · latency profiling",url:"https://github.com/Charozetta/arxiv-bge-faiss-dense-retrieval"},{title:"Russian LLM Pretraining & SFT",subtitle:"Llama-like pretraining · BPE tokenizer · Qwen2.5 SFT",url:"https://github.com/Charozetta/russian-llm-pretraining-sft"},{title:"RNNs vs Transformers",subtitle:"LSTM · GRU · DistilGPT-2 · WikiText-2",url:"https://github.com/Charozetta/next-word-prediction-rnns-transformers"},{title:"CLIP Fashion Retrieval",subtitle:"Text-to-image retrieval · contrastive learning · Recall@k / MRR",url:"https://github.com/Charozetta/clip-fashion-text-to-image-retrieval"}]},
+decision:{kicker:"Decision Systems & Applied ML",title:"Models and logic in service of decisions",copy:"This area connects my professional background in operational decision-support systems with applied ML projects where model outputs are tied to business consequences rather than treated as isolated prediction tasks.",boxes:[["Professional work","Decision-support systems for complex transportation planning and operations."],["Applied focus","Risk, pricing, auctions, demand and operational choices."],["What matters","Calibration, thresholds, uncertainty, business constraints and usable decision logic."],["Why this belongs together","The common object is not the model — it is the decision the system has to support."]],projects:[{title:"Bank Behavioral Scoring",subtitle:"Default risk · calibration · business-constrained thresholding",url:"https://github.com/Charozetta/bank-behavioral-scoring"},{title:"AutoValue AI Pricing",subtitle:"Quantile regression · business risk · SHAP · Optuna",url:"https://github.com/Charozetta/autovalue-ai-pricing"},{title:"CTR Prediction",subtitle:"RTB auctions · probability calibration · PR-AUC / Log Loss / Brier",url:"https://github.com/Charozetta/CTR-prediction"}]},
 research:{kicker:"Research note",title:"Computable Expert Knowledge",copy:"The long-term question is broader than one model or one domain: what must be preserved, represented, retrieved and evaluated so that expert knowledge remains useful and challengeable when used by AI systems?",boxes:[["Preserve","Identify the context, evidence and qualifications that must travel with a knowledge claim."],["Represent","Encode meaning, provenance and applicability without flattening important distinctions."],["Retrieve","Recover the right knowledge together with its conditions and caveats."],["Evaluate","Measure knowledge quality beyond extraction accuracy alone."]]},
 gnodusModal:{kicker:"Building Gnodus",title:"From research problem to company hypothesis",copy:"Gnodus is an early-stage company exploring whether a recurring problem in expert AI systems can become the basis for reusable technology and a viable business.",boxes:[["Problem","AI systems can access increasing amounts of expert information, but important context, evidence and applicability can be lost between source and use."],["Current hypothesis","Knowledge quality may require a layer that preserves and exposes these properties for downstream AI systems and expert users."],["First domain","Medicine, where incomplete or decontextualised knowledge is particularly consequential."],["Current stage","Research, customer discovery and product hypothesis development."]]}
 };
 const wrap=document.getElementById('modalWrap'),closeBtn=document.getElementById('modalClose'),content=document.getElementById('modalContent'),kicker=document.getElementById('modalKicker');
-function openModal(key){const d=modalData[key];if(!d)return;kicker.textContent=d.kicker;content.innerHTML=`<h3>${d.title}</h3><p>${d.copy}</p><div class="modal-grid">${d.boxes.map(b=>`<div class="modal-box"><strong>${b[0]}</strong><span>${b[1]}</span></div>`).join('')}</div><div class="modal-actions"><a href="#" onclick="event.preventDefault();alert('Prototype: connect GitHub or case page')">GitHub / Project ↗</a><a href="#" onclick="event.preventDefault();alert('Prototype: open long-form page')">Read more ↗</a></div>`;wrap.classList.add('open');document.body.style.overflow='hidden'}
+function openModal(key){
+  const d=modalData[key];
+  if(!d)return;
+  kicker.textContent=d.kicker;
+  const projects=d.projects&&d.projects.length?`<div class="modal-projects"><div class="modal-projects-title">Selected repositories</div>${d.projects.map(p=>`<a class="modal-project-link" href="${p.url}" target="_blank" rel="noopener noreferrer"><span class="modal-project-copy"><strong>${p.title}</strong><span>${p.subtitle}</span></span><span class="modal-project-arrow">GitHub ↗</span></a>`).join('')}</div>`:'';
+  content.innerHTML=`<h3>${d.title}</h3><p>${d.copy}</p><div class="modal-grid">${d.boxes.map(b=>`<div class="modal-box"><strong>${b[0]}</strong><span>${b[1]}</span></div>`).join('')}</div>${projects}`;
+  wrap.classList.add('open');
+  document.body.style.overflow='hidden';
+}
 function closeModal(){wrap.classList.remove('open');document.body.style.overflow=''}
 document.querySelectorAll('[data-modal]').forEach(el=>el.addEventListener('click',()=>openModal(el.dataset.modal)));
 closeBtn.addEventListener('click',closeModal);wrap.addEventListener('click',e=>{if(e.target===wrap)closeModal()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
