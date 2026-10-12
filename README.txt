@@ -1,5 +1,4 @@
-Julia Kewitz personal site — prototype v0.4
-
+Julia Kewitz personal site
 Changes:
 - hero focus simplified
 - About softened from fixed research identity to active exploration
